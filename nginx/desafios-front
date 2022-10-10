@@ -1,0 +1,12 @@
+server {
+    listen 80;
+   
+    location / {
+        root /home/inove-desafios-front/;
+        index  index.html;
+    }
+    
+    location ~* \.(js|jpg|png|css)$ {
+        root /home/inove-desafios-front/;
+    }
+} 
