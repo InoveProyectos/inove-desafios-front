@@ -1,35 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>Aplicacion Viajes</title>
-  </head>
-  <body>
-    <div class="father">
-      <header>
-        <nav>
-          <ul>
-            <li class="interactable">
-              <img src="./images/menu.png" alt="menu" width="24" />
-            </li>
-            <li class="interactable">
-              <img src="./images/search.png" alt="search" width="24" />
-            </li>
-            <li class="interactable">
-              <img src="./images/bell.png" alt="bell" width="24" />
-            </li>
-            <li class="interactable">
-              <img src="./images/avatar-iconn.jpg" alt="avatar" width="50"/>
-            </li>
-          </ul>
-        </nav>
-      </header>
-    </div>
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="./js/app.js"></script>
+  <!-- Include font awesome -->
+  <script src="./js/fontawesome.js"></script>
 
-  </body>
+  <!-- Include styles -->
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/to_upload.css" />
+
+  <link rel="icon" type="image/png" href="./images/inove_icon.png"" sizes="32x32" />
+  <title>Desafios</title>
+</head>
+<body>
+  <div id="container">
+    <section>
+      <h2 id="username"></h2>
+    </section>
+    <section>
+      <button id="enviar" class="btn-primary">Enviar</button>
+      <!-- <div id="to_upload_container"> -->
+      <div id="to_upload">
+        <i class="fa fa-cloud-upload"></i>
+        <a href="#">Selecciona
+          <input type="file" id="files" name="files[]" accept="*.py">
+        </a>
+        o arrastra aqu&iacute; el desafio a subir.
+        <div class="fileDiv"></div>
+      </div>
+      <!-- </div> -->
+    </section>
+  </div>
+
+  <script src="./js/to_upload.js"></script>
+  <script src="./js/app.js"></script>
+
+</body>
 </html>

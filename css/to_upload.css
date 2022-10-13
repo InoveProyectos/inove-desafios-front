@@ -1,0 +1,123 @@
+:root {
+  --to_upload_icon: "\f1c3";
+}
+
+#to_upload{
+  background-color:#FAFAFA;
+  border:1px dashed #BBB;
+  height: 120px;
+  padding: 10px;
+  padding-top: 40px;
+
+  text-align: center;
+  
+}
+
+#to_upload.is-dragover {
+  background-color: lightcyan;
+}
+
+#to_upload a{
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  text-decoration: none;
+}
+
+#to_upload a input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+#to_upload .fileDiv{
+  height: 100px;
+  display: none;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+#to_upload .uploadFile {
+  width: 100px;
+  height: 100%;
+  position: relative;
+}
+
+#to_upload .uploadFile span {
+  text-align: center;
+  font-size: 13px;
+}
+#to_upload .uploadFile:before {
+  content: var(--to_upload_icon);
+  margin: 0;
+  margin: 0;
+  padding: 0;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 50px;
+  top: 0;
+  left: 0;
+  color: rgba(146, 145, 145, 0.5);
+  top: 25px;
+  left: 25px;
+  /*margin: -300px 0 0 -200px;*/
+  z-index: 1;
+}
+
+#to_upload .uploadFile button {
+  float:right;
+  background: none;
+  border: none;
+  outline: none;
+  color: #444444;
+}
+
+/*#to_upload > div{
+  margin-top: 10px;
+  overflow:hidden;
+}
+
+/* 5 imagenes por fila */
+/*#to_upload > div > div{
+  width:220px;
+  height: 165px;
+  padding-right: 1%;
+  padding-left: 1%;
+  float:left;
+}*/
+
+.dd-thumbnail{
+  min-height: 140px;
+  /* todo:imagenes perfectas en el div */
+  background-size: cover;
+}
+
+.dd-thumbnail i{
+  /*icon size*/
+  font-size:50px;
+  margin-top:40px;
+}
+
+.dd-file-info {
+  width: 100%
+}
+.dd-file-info span {
+  float:left;
+  font-size: 13px;
+  padding-top: 3px;
+}
+.dd-file-info button {
+  float:right;
+  background: none;
+  border: none;
+  outline: none;
+  color: #444444;
+}
