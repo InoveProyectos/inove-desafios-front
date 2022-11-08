@@ -13,7 +13,7 @@ else {
 }
 
 if(username == "") {
-    alert("NOT LOGIN");    
+    alert("NOT LOGIN");
 }
 
 const divUsername = document.querySelector('#username');
@@ -39,17 +39,17 @@ function validateFile(fileData) {
 // Boton enviar
 document.querySelector("#enviar").onclick = async () => {
 
-    codeNumber = validateFile(fileData);
-    if(codeNumber < 0 || !codeNumber) {
+    challengeNumber = validateFile(fileData);
+    if(challengeNumber < 0 || !challengeNumber) {
         alert("Error, archivo ingresado inválido");
         return;
     }
 
-    const url = "http://localhost:8095/solution"
+    const url = `http://localhost:8000/python/challenge/${challengeNumber}`
+    console.log(fileData);
     const data = {
         username: username,
-        challenge: codeNumber,
-        solution: fileData,
+        code: fileData,
     }
 
     try {
@@ -61,7 +61,8 @@ document.querySelector("#enviar").onclick = async () => {
             body: JSON.stringify(data)
         });
         if(resp.ok) {
-            alert("Datos enviados");
+            const jsonData = await resp.json()
+            chanllengeTest(jsonData);
         } else {
             alert("No pudo completarse la solicitud");
         }

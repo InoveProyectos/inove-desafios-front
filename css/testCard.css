@@ -1,0 +1,238 @@
+.tcard{
+    background-color: whitesmoke;
+    border: solid 1px #9fa4a8;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+    transition: .4s ease;
+    text-align: left;
+  }
+.tcard.pass{
+    background-color: #bff8d2;
+  }
+.tcard.fail{
+    background-color: #ffdbb8;
+  }
+.tcard.error{
+    background-color: #f08383;
+  }
+.tcard.active {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .1), 0 3px 6px rgba(0, 0, 0, .1);
+}
+  
+/*.tcard.active::before, .tcard.active::after {
+    content: "\f085";
+    font-family: 'Font Awesome 5 Free';
+    color: #2ecc71;
+    position: absolute;
+    font-size: 7rem;
+    opacity: .2;
+    top: 20px;
+    left: 20px;
+    z-index: 0;
+}*/
+/*.tcard.active::before{
+  color: #3498db;
+  top: -10px;
+  left: -30px;
+  transform: rotateY(180deg);
+}*/
+
+.tcard-title{
+  margin: 0 35px 0 0;
+}
+.tcard-text{
+  display: none;
+  margin: 30px 0 0;
+}
+.tcard.active .tcard-text{
+  /*display: block;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+.tcard-toggle {
+    border: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    height: 30px;
+    width: 30px;
+}
+.tcard-toggle .fa-times{
+  display: none;
+}
+.tcard.active .tcard-toggle .fa-times{
+  display: block;
+  color: #fff;
+}
+.tcard.active .tcard-toggle .fa-chevron-down{
+  display: none;
+}
+.tcard.active .tcard-toggle {
+  background: #999;
+}
+
+.tcard-test-container {
+  width: 100%;
+  border: 3px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+}
+.tcard-test-name {
+  font-size: 28px;
+}
+
+.tcard-trial-container {
+  width: 100%;
+  border: 3px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+}
+.tcard-trial-text {
+  width: 90%;
+}
+
+  /* common */
+.ribbon {
+  width: 75px; /*150*/
+  height: 75px;  /*150*/
+  overflow: hidden;
+  position: absolute;
+}
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  display: block;
+}
+.ribbon-span {
+  position: absolute;
+  display: block;
+  width: 112px; /*225*/
+  padding: 4px 0; /*15*/
+  background-color: #3498db;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  color: #fff;
+  font: 700 18px/1 'Lato', sans-serif;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.ribbon-span.pass {
+  background-color: #04AA6D;
+}
+.ribbon-span.error {
+  background-color: #f08383;
+}
+
+/* top left*/
+.ribbon-top-left {
+  top: -10px;
+  left: -10px;
+}
+.ribbon-top-left::before,
+.ribbon-top-left::after {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-top-left::before {
+  top: 0;
+  right: 0;
+}
+.ribbon-top-left::after {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-top-left span {
+  right: -25px;
+  top: 30px;
+  transform: rotate(-45deg);
+}
+
+/* top right*/
+.ribbon-top-right {
+  top: -10px;
+  right: -10px;
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-top-right::before {
+  top: 0;
+  left: 0;
+}
+.ribbon-top-right::after {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-top-right span {
+  left: -25px;
+  top: 30px;
+  transform: rotate(45deg);
+}
+
+/* bottom left*/
+.ribbon-bottom-left {
+  bottom: -10px;
+  left: -10px;
+}
+.ribbon-bottom-left::before,
+.ribbon-bottom-left::after {
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-bottom-left::before {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-bottom-left::after {
+  top: 0;
+  left: 0;
+}
+.ribbon-bottom-left span {
+  right: -25px;
+  bottom: 30px;
+  transform: rotate(225deg);
+}
+
+/* bottom right*/
+.ribbon-bottom-right {
+  bottom: -10px;
+  right: -10px;
+}
+.ribbon-bottom-right::before,
+.ribbon-bottom-right::after {
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-bottom-right::before {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-bottom-right::after {
+  top: 0;
+  right: 0;
+}
+.ribbon-bottom-right span {
+  left: -25px;
+  bottom: 30px;
+  transform: rotate(-225deg);
+}
