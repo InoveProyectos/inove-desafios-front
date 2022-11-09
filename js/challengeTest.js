@@ -1,6 +1,6 @@
 
 function TestTrialCard(description, result, actual=0, expected=0) {
-    this.description = description;
+    this.description = description[0].toUpperCase() + description.substring(1);
     this.result = result;
     this.actual = actual;
     this.expected = expected;
@@ -25,7 +25,7 @@ function TestTrialCard(description, result, actual=0, expected=0) {
         return `
         <div class="tcard-trial-container">
             <div class="ribbon ribbon-top-right ${this.status}">
-                <span class="ribbon-span error">${this.status}</span>
+                <span class="ribbon-span ${this.status}">${this.status}</span>
             </div>
             <div class="tcard-trial-text">
                 <div class="tcard-test-name">
@@ -41,15 +41,18 @@ function TestCard(id, totalSuccess, totalTrials, name, inputs, trials) {
     this.id = id;
     this.totalSuccess = totalSuccess;
     this.totalTrials = totalTrials;
-    this.name = name;
+    this.name = name[0].toUpperCase() + name.substring(1);;
     this.inputs = inputs;
     this.trials = trials;
 
     this.render = () => {
         let trials = "";
-
+        this.trials.forEach(trial => { 
+            trials += trial.render();
+        });
+        const status = totalSuccess == totalTrials? "pass":"fail";
         return `
-        <div class="tcard fail">
+        <div class="tcard ${status}">
             <h3 class="tcard-title">
                 <i class="fas fa-bullseye"></i>  Test ${this.id} (${this.totalSuccess}/${this.totalTrials})
             </h3>
@@ -60,8 +63,8 @@ function TestCard(id, totalSuccess, totalTrials, name, inputs, trials) {
                     <div>Entradas:</div>
                     <div>${this.inputs}</div>
                 </div>
+                ${trials}
             </div>
-            ${trials}
             <button class="tcard-toggle">
             <i class="fas fa-chevron-down"></i>
             <i class="fas fa-times"></i>
@@ -69,8 +72,6 @@ function TestCard(id, totalSuccess, totalTrials, name, inputs, trials) {
         </div>
         `
     };
-
-
 }
 
 function chanllengeTest(data) {
@@ -79,7 +80,7 @@ function chanllengeTest(data) {
     const score = data["score"];
     const coderun = data["coderun"];
 
-    document.querySelector('#score').innerHTML = score;
+    document.querySelector('#score').innerHTML = `Puntaje: ${score}`;
     document.querySelector('#errorMessage').innerHTML = "";
     document.querySelector('#tests').innerHTML = "";
 
@@ -91,6 +92,7 @@ function chanllengeTest(data) {
         tests.forEach(test => {            
             const name = test["test_name"];
             const result = test["test_description"]["result"];
+            const inputs = String(test["input"]);
             let componentsTrial = [];
             let totalSuccess = 0;
             let totalTrials = 0;
@@ -105,20 +107,22 @@ function chanllengeTest(data) {
                         totalSuccess++;
                     }
                     totalTrials++;
-                    return TestTrialCard(message, result, actual, expected);
+                    return new TestTrialCard(message, result, actual, expected);
                 })
             }
             else {
                 const message = test["Error"];
                 totalSuccess = "-";
                 totalTrials = "-";
-                componentsTrial.push(TestTrialCard(message, result));
+                componentsTrial.push(new TestTrialCard(message, result));
             }
-            accumulator +=  TestCard(i, totalSuccess, totalTrials, name, inputs, componentsTrial).render();
+            const componentTest = new TestCard(i, totalSuccess, totalTrials, name, inputs, componentsTrial)
+            accumulator +=  componentTest.render();
             i++;
         })
         
         document.querySelector('#tests').innerHTML = accumulator;
+        tcardToogle();
     }
     else{
         document.querySelector('#errorMessage').innerHTML = data["message"];
