@@ -74,7 +74,16 @@ function TestCard(id, totalSuccess, totalTrials, name, inputs, trials) {
     };
 }
 
-function chanllengeTest(data) {
+function challengeTestShow() {
+    document.querySelector('#scoreSection').style.display = "block";
+    document.querySelector('#testSection').style.display = "block";
+}
+function challengeTestHide() {
+    document.querySelector('#scoreSection').style.display = "none";
+    document.querySelector('#testSection').style.display = "none";
+}
+
+function challengeTest(data) {
 
     const all_passed = data["data"];
     const score = data["score"];
@@ -82,7 +91,7 @@ function chanllengeTest(data) {
 
     document.querySelector('#score').innerHTML = `Puntaje: ${score}`;
     document.querySelector('#errorMessage').innerHTML = "";
-    document.querySelector('#tests').innerHTML = "";
+    document.querySelector('#testSection').innerHTML = "";
 
     if(coderun == true) {
         const tests = data["tests"];
@@ -121,7 +130,7 @@ function chanllengeTest(data) {
             i++;
         })
         
-        document.querySelector('#tests').innerHTML = accumulator;
+        document.querySelector('#testSection').innerHTML = accumulator;
         tcardToogle();
     }
     else{

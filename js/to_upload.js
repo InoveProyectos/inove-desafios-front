@@ -58,6 +58,15 @@ function readFiles(event){
   preview(archivos[0]);
 }
 
+function clearUploadedFiles() {
+  const fileDiv = document.querySelector('#to_upload .fileDiv')
+  fileDiv.innerHTML = "";
+  fileDiv.style.display = "none";
+  fileData = "";
+  const container = document.querySelector('#to_upload');
+  container.style.height = "120px";
+}
+
 function preview(file) {
   //add the file to 'images' array
   const reader = new FileReader();
@@ -80,13 +89,11 @@ function preview(file) {
       
       const btnRemove = document.createElement('button');
       btnRemove.addEventListener('click', function(x){
-        console.log(file.name);
+        //console.log(file.name);
         //remove the element from the list of images
-        fileDiv.innerHTML = "";
-        fileDiv.style.display = "none";
         //remove the current file from the list
         //delete files[file.name];
-        fileData = "";
+        clearUploadedFiles();
       },false);
 
       const btnIcon = document.createElement('i');
@@ -97,8 +104,10 @@ function preview(file) {
       //fileContainer.appendChild(icon);
       fileContainer.appendChild(btnRemove);
       fileDiv.appendChild(fileContainer);
-
       fileData = reader.result;
+
+      const container = document.querySelector('#to_upload');
+      container.style.height = "200px";
 
     }, false);
 

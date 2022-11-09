@@ -45,13 +45,14 @@ document.querySelector("#enviar").onclick = async () => {
         return;
     }
 
-    const url = `http://localhost:8000/python/challenge/${challengeNumber}`
-    console.log(fileData);
+    const url = `${domain}/python/challenge/${challengeNumber}`
+    challengeTestHide();
+    //console.log(fileData);
     const data = {
         username: username,
         code: fileData,
     }
-
+    let jsonData = null;
     try {
         const resp = await fetch(url, {
             method: 'POST',
@@ -61,13 +62,24 @@ document.querySelector("#enviar").onclick = async () => {
             body: JSON.stringify(data)
         });
         if(resp.ok) {
-            const jsonData = await resp.json()
-            chanllengeTest(jsonData);
+            jsonData = await resp.json()
         } else {
             alert("No pudo completarse la solicitud");
         }
     } catch (error) {
+        console.log(error);
         alert("No se pudo conectar con el sistema de desafios");
+    }
+
+    try {
+        if(jsonData != null) {
+            challengeTest(jsonData);
+            challengeTestShow();
+            clearUploadedFiles();
+        }
+    } catch (error) {
+        console.log(error);
+        alert("Error al cargar los datos del test");
     }
 }
 
