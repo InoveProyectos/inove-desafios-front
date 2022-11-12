@@ -1,9 +1,15 @@
+function removeHTMLbracer(text) {
+    text = String(text).replace('<', '');
+    text = String(text).replace('>', '');
+    return text;
+}
+
 
 function TestTrialCard(description, result, actual=0, expected=0) {
     this.description = description[0].toUpperCase() + description.substring(1);
     this.result = result;
-    this.actual = actual;
-    this.expected = expected;
+    this.actual = String(removeHTMLbracer(actual));
+    this.expected = String(removeHTMLbracer(expected));
     
     if(result == "success") {
         this.status = "pass";
@@ -14,11 +20,11 @@ function TestTrialCard(description, result, actual=0, expected=0) {
 
     this.render = () => {
         let values = "";
-        if(result != "error") {
+        if(this.result != "error") {
             values = `
                 <div>Valor obtenido/resultado:</div>
                 <div>${this.actual}</div>
-                <div>Valor esperado</div>
+                <div>Valor esperado:</div>
                 <div>${this.expected}</div>
                 `;
         }
@@ -44,15 +50,21 @@ function TestCard(id, totalSuccess, totalTrials, name, inputs, trials) {
     this.name = name[0].toUpperCase() + name.substring(1);;
     this.inputs = inputs;
     this.trials = trials;
+    this.status = ""
+    if(totalTrials == "-") {
+        this.status = "error";
+    }
+    else {
+        this.status = totalSuccess == totalTrials? "pass":"fail";
+    }
 
     this.render = () => {
         let trials = "";
         this.trials.forEach(trial => { 
             trials += trial.render();
         });
-        const status = totalSuccess == totalTrials? "pass":"fail";
         return `
-        <div class="tcard ${status}">
+        <div class="tcard ${this.status}">
             <h3 class="tcard-title">
                 <i class="fas fa-bullseye"></i>  Test ${this.id} (${this.totalSuccess}/${this.totalTrials})
             </h3>
@@ -91,6 +103,7 @@ function challengeTest(data) {
 
     document.querySelector('#score').innerHTML = `Puntaje: ${score}`;
     document.querySelector('#errorMessage').innerHTML = "";
+    document.querySelector('#errorDetail').innerHTML = "";
     document.querySelector('#testSection').innerHTML = "";
 
     if(coderun == true) {
@@ -112,11 +125,12 @@ function challengeTest(data) {
                     const message = trial["description"];
                     const expected = trial["expected"];
                     const actual = trial["actual"];
-                    if(result == "success") {
+                    const passed = trial["passed"]? "success":"failure";
+                    if(passed == "success") {
                         totalSuccess++;
                     }
                     totalTrials++;
-                    return new TestTrialCard(message, result, actual, expected);
+                    return new TestTrialCard(message, passed, actual, expected);
                 })
             }
             else {
@@ -134,6 +148,8 @@ function challengeTest(data) {
         tcardToogle();
     }
     else{
+        document.querySelector('#testSection').style.display = "none";
         document.querySelector('#errorMessage').innerHTML = data["message"];
+        document.querySelector('#errorDetail').innerHTML = data["description"];
     }
 }

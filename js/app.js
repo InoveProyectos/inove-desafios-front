@@ -45,7 +45,7 @@ document.querySelector("#enviar").onclick = async () => {
         return;
     }
 
-    const url = `${domain}/python/challenge/${challengeNumber}`
+    const url = `${domain}/api/python/challenge/${challengeNumber}`
     challengeTestHide();
     //console.log(fileData);
     const data = {
