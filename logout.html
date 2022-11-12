@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Include font awesome -->
+  <script src="./js/fontawesome.js"></script>
+
+  <!-- Include styles -->
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <link rel="icon" type="image/png" href="./images/inove_icon.png"" sizes="32x32" />
+  <title>Desafios</title>
+</head>
+<body>
+  <div id="container">
+    <section>
+      <h3>Usted está siendo redirigido al portal del campus</h3>
+    </section>
+  </div>
+</body>
+
+<script>
+  localStorage.removeItem('desafiosUsername');
+  window.location.href = "https://inove.com.ar/campus/login/index.php";
+</script>
+
+</html>

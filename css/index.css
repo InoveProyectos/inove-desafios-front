@@ -1,0 +1,9 @@
+#usernameSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#username {
+  flex: 1;
+}

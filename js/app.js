@@ -13,7 +13,7 @@ else {
 }
 
 if(username == "") {
-    alert("NOT LOGIN");
+    window.location.href = "https://inove.com.ar/campus/login/index.php";
 }
 
 const divUsername = document.querySelector('#username');
