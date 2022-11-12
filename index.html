@@ -9,6 +9,7 @@
 
   <!-- Include styles -->
   <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/confetti.css" />
   <link rel="stylesheet" href="./css/to_upload.css" />
   <link rel="stylesheet" href="./css/testCard.css" />
 
@@ -21,7 +22,6 @@
       <h2 id="username"></h2>
     </section>
     <section>
-      <!-- <div id="to_upload_container"> -->
       <div id="to_upload">
         <i class="fa fa-cloud-upload"></i>
         <a href="#">Selecciona
@@ -30,7 +30,6 @@
         o arrastra aqu&iacute; el desafio a subir.
         <div class="fileDiv"></div>
       </div>
-      <!-- </div> -->
     </section>
     <section>
       <button id="enviar" class="btn-primary">Enviar</button>    
@@ -42,79 +41,11 @@
       <div id="errorDetail"></div>
     </section>
     <section style="display: none;" id="testSection">
-      <!-- <div class="tcard fail">
-        <h3 class="tcard-title"><i class="fas fa-bullseye"></i>  Test 1 (1/2)</h3>
-        <div class="tcard-text">
-          <div class="tcard-test-container">
-            <div class="tcard-test-name">
-              Crear variable suma</div>
-            <div>Entradas:</div>
-            <div>[]</div>
-          </div>
-          <div class="tcard-trial-container">
-            <div class="ribbon ribbon-top-right pass">
-              <span class="ribbon-span error">ERROR</span>
-            </div>
-            <div class="tcard-trial-text">
-              <div class="tcard-test-name">
-                ¿Existe la variable suma?</div>
-              <div>Valor obtenido/resultado:</div>
-              <div>False</div>
-              <div>Valor esperado</div>
-              <div>True</div>
-            </div>
-          </div>
-          <div class="tcard-trial-container">
-            <div class="ribbon ribbon-top-right pass">
-              <span class="ribbon-span pass">PASS</span>
-            </div>
-              <div class="tcard-trial-text">
-                <div class="tcard-test-name">
-                  ¿La variable suma es entera?</div>
-              <div>Valor obtenido/resultado:</div>
-              <div>True</div>
-              <div>Valor esperado</div>
-              <div>True</div>
-            </div>
-          </div>
-        </div>
-        <button class="tcard-toggle">
-          <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="tcard pass">
-        <h3 class="tcard-title"><i class="fas fa-bullseye"></i>  Test 2 (1/1)</h3>
-        <div class="tcard-text">
-          <div class="tcard-test-container">
-            <div class="tcard-test-name">
-              Crear variable suma</div>
-            <div>Entradas:</div>
-            <div>[5, 2]</div>
-          </div>
-          <div class="tcard-trial-container">
-            <div class="ribbon ribbon-top-right pass">
-              <span class="ribbon-span error">PASS</span>
-            </div>
-            <div class="tcard-trial-text">
-              <div class="tcard-test-name">
-                Operación suma</div>
-              <div>Valor obtenido/resultado:</div>
-              <div>7</div>
-              <div>Valor esperado</div>
-              <div>7</div>
-            </div>
-          </div>
-        </div>
-        <button class="tcard-toggle">
-          <i class="fas fa-chevron-down"></i>
-        <i class="fas fa-times"></i>
-        </button>
-      </div> -->
     </section>
   </div>
 
   <script src="./js/config.js"></script>
+  <script src="./js/confetti.js"></script>
   <script src="./js/to_upload.js"></script>
   <script src="./js/testCard.js"></script>
   <script src="./js/challengeTest.js"></script>

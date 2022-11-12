@@ -93,6 +93,7 @@ function challengeTestShow() {
 function challengeTestHide() {
     document.querySelector('#scoreSection').style.display = "none";
     document.querySelector('#testSection').style.display = "none";
+    stopConfetti();
 }
 
 function challengeTest(data) {
@@ -146,6 +147,9 @@ function challengeTest(data) {
         
         document.querySelector('#testSection').innerHTML = accumulator;
         tcardToogle();
+        if(score == 100) {
+            startConfetti();
+        }
     }
     else{
         document.querySelector('#testSection').style.display = "none";
