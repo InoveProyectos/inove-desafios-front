@@ -3,11 +3,11 @@ server {
     listen [::]:80;
     
     listen 443 ssl;
-	listen [::]:443 ssl;
-    ssl_certificate /etc/letsencrypt/live/brego.com.ar/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/brego.com.ar/privkey.pem;
+    listen [::]:443 ssl;
+    ssl_certificate /etc/letsencrypt/live/inovecode.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/inovecode.com/privkey.pem;
 
-    server_name app.brego.com.ar;
+    server_name desafios.inovecode.com;
    
     location / {
         root /home/inove-desafios-front/;
