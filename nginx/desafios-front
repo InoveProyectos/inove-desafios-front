@@ -7,7 +7,7 @@ server {
     ssl_certificate /etc/letsencrypt/live/inovecode.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/inovecode.com/privkey.pem;
 
-    server_name desafios.inovecode.com;
+    server_name sistemadesafios.inovecode.com;
    
     location / {
         root /home/inove-desafios-front/;
