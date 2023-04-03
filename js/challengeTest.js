@@ -35,7 +35,8 @@ function TestTrialCard(description, result, actual=0, expected=0) {
             </div>
             <div class="tcard-trial-text">
                 <div class="tcard-test-name">
-                    ${this.description}</div>
+                    <pre style="overflow:auto">${this.description}</pre>
+                </div>
                 ${values}
             </div>
         </div>
@@ -154,6 +155,6 @@ function challengeTest(data) {
     else{
         document.querySelector('#testSection').style.display = "none";
         document.querySelector('#errorMessage').innerHTML = data["message"];
-        document.querySelector('#errorDetail').innerHTML = data["description"];
+        document.querySelector('#errorDetail').innerHTML = `<pre>${data["description"]}</pre>`;
     }
 }
